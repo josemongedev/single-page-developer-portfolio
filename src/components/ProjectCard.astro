@@ -1,0 +1,14 @@
+---
+const { projectData } = Astro.props;
+---
+
+<div>
+  <picture>
+    <source srcset={projectData.imageUrl.large} media="(min-width: 600px)" />
+    <img src={projectData.imageUrl.small} alt={projectData.title} />
+  </picture>
+  <strong>{projectData.title}</strong>
+  {projectData.languages.map((language) => <span>{language}</span>)}
+  <a href={projectData.projectUrl}>View project</a>
+  <a href={projectData.sourceUrl}>View source</a>
+</div>

@@ -1,0 +1,21 @@
+---
+const experience = [
+  { lang: "HTML", time: "4" },
+  { lang: "CSS", time: "4" },
+  { lang: "Javascript", time: "4" },
+  { lang: "Accessibility", time: "4" },
+  { lang: "React", time: "3" },
+  { lang: "Sass", time: "3" },
+];
+---
+
+<section>
+  {
+    experience.map((skill) => (
+      <div>
+        <span>{skill.lang}</span>
+        <span>{skill.time} Years of Experience</span>
+      </div>
+    ))
+  }
+</section>

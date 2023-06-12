@@ -1,0 +1,7 @@
+---
+const socialIcons = await Astro.glob("../images/*.svg");
+---
+
+<span>
+  {socialIcons.map((icon) => <img src={icon.default} alt={icon.default} />)}
+</span>

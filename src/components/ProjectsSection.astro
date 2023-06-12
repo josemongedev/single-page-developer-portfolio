@@ -1,0 +1,19 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+const projects = await Astro.glob("../pages/projects/*.md");
+---
+
+<section>
+  <header>
+    <h1>Projects</h1>
+    <a href="#contact"></a>
+    Contact me
+  </header>
+  <article>
+    {
+      projects.map((project) => (
+        <ProjectCard projectData={project.frontmatter} />
+      ))
+    }
+  </article>
+</section>
