@@ -73,6 +73,7 @@
 }
 
 html {
+  min-width: 100%;
   color-scheme: dark;
   font-family: var(--ff-base);
   background-color: var(--clr-primary-800);
@@ -81,7 +82,7 @@ html {
 }
 
 body {
-  width: 100%;
+  min-width: 100%;
   overflow-x: clip;
 }
 
@@ -155,6 +156,10 @@ h3 {
   letter-spacing: var(--ls-200);
 }
 
+.section-color-100 {
+  color: var(--clr-primary-200);
+  background-color: var(--clr-primary-800);
+}
 .section-color-400 {
   background-color: var(--clr-primary-400);
 }

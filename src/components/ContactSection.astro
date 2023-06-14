@@ -25,7 +25,9 @@ const bgColor = "section-color-400";
     <ContactForm />
   </section>
   <footer>
-    <ProfileBar developerName={developerName} />
+    <div>
+      <ProfileBar developerName={developerName} />
+    </div>
   </footer>
 </SectionLayout>
 
@@ -71,6 +73,7 @@ const bgColor = "section-color-400";
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     padding: 40px 16px 60px 16px;
   }
 

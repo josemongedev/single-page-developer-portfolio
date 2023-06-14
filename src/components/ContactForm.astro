@@ -2,18 +2,52 @@
 ---
 
 <form action="mailto:info@josemonge.dev" method="post" enctype="text/plain">
-    <div>
-        <input type="text" name="subject" id="name" placeholder="name" />
-    </div>
-    <div>
-        <input type="email" name="email" id="email" placeholder="email" />
-    </div>
-    <div>
-        <textarea name="message" id="message" rows="3" placeholder="message"
-        ></textarea>
-    </div>
+    <fieldset>
+        <input
+            type="text"
+            name="subject"
+            id="name"
+            placeholder="name"
+            pattern="[A-Za-z]+"
+            required
+            value=""
+        />
+        <div class="icon"></div>
+        <div class="notification">
+            <span class="error-message">Sorry, invalid format here</span>
+            <span class="required-message">Field is required</span>
+        </div>
+    </fieldset>
+    <fieldset>
+        <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            required
+            value=""
+        />
+        <div class="icon"></div>
+        <div class="notification">
+            <span class="error-message">Sorry, invalid format here</span>
+            <span class="required-message">Field is required</span>
+        </div>
+    </fieldset>
+    <fieldset>
+        <textarea
+            name="message"
+            id="message"
+            rows="3"
+            placeholder="message"
+            required></textarea>
+        <div class="icon"></div>
+        <div class="notification">
+            <span class="required-message">Field is required</span>
+        </div>
+    </fieldset>
 
-    <div>
+    <div class="controls">
         <button class="button-style"> Send message</button>
     </div>
 </form>
@@ -25,13 +59,57 @@
         gap: 32px;
     }
 
-    form div {
+    .controls {
+        display: grid;
+        grid-template-columns: 1fr 48px;
+        justify-items: end;
+    }
+
+    fieldset div {
         display: flex;
         justify-content: end;
     }
 
+    fieldset {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 48px;
+        grid-template-rows: 1fr 16px;
+        grid-template-areas:
+            "input icon"
+            "notification";
+        outline: none;
+        border: none;
+    }
+
+    .icon {
+        /* grid-area: icon; */
+        width: 48px;
+        height: 48px;
+        display: inline-block;
+        -webkit-mask: url(../icons/check-circle-svgrepo-com.svg) no-repeat 50%
+            50%;
+        mask: url(../icons/check-circle-svgrepo-com.svg) no-repeat 50% 50%;
+        -webkit-mask-size: cover;
+        mask-size: cover;
+    }
+
+    .notification {
+        /* grid-area: notification; */
+    }
+
+    .required-message,
+    .error-message {
+        visibility: hidden;
+        font-size: var(--fs-100);
+        color: var(--clr-secondary-400);
+    }
+
     input,
     textarea {
+        /* grid-area: input; */
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
@@ -39,20 +117,67 @@
         font-size: var(--fs-200);
         line-height: var(--lh-300);
         letter-spacing: var(--ls-200);
-        padding: 0 0 16px 0;
+        padding: 0 24px 16px 0px;
         width: 100%;
         background-color: transparent;
-        border: none;
-    }
-
-    div {
         border-color: var(--clr-primary-100);
         border-width: 0 0 1px 0;
         border-style: solid;
-        padding: 0 24px 0 24px;
+        outline: none;
     }
 
-    div:last-child {
-        border: none;
+    textarea {
+        resize: none;
+    }
+
+    input:empty,
+    textarea:empty {
+        border-color: var(--clr-primary-100);
+    }
+
+    input:invalid:focus,
+    textarea:invalid:focus {
+        border-color: var(--clr-secondary-400);
+    }
+
+    input:invalid + .icon,
+    textarea:invalid + .icon {
+        width: 48px;
+        height: 48px;
+        display: inline-block;
+
+        -webkit-mask: url(../icons/exclamation-circle-svgrepo-com.svg) no-repeat
+            50% 50%;
+        mask: url(../icons/exclamation-circle-svgrepo-com.svg) no-repeat 50% 50%;
+        -webkit-mask-size: cover;
+        mask-size: cover;
+    }
+
+    input:invalid:focus + .icon,
+    textarea:invalid:focus + .icon {
+        background-color: var(--clr-secondary-400);
+    }
+
+    input:valid:focus + .icon,
+    textarea:valid:focus + .icon {
+        background-color: var(--clr-accent-400);
+    }
+
+    input:valid,
+    textarea:valid {
+        border-color: var(--clr-accent-400);
+    }
+
+    input:invalid:focus ~ div > .error-message {
+        visibility: visible;
+    }
+
+    textarea:placeholder-shown ~ div > .error-message,
+    input:placeholder-shown ~ div > .error-message {
+        visibility: hidden !important;
+    }
+    textarea:placeholder-shown:focus ~ div > .required-message,
+    input:placeholder-shown:focus ~ div > .required-message {
+        visibility: visible;
     }
 </style>
