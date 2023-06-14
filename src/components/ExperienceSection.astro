@@ -1,4 +1,6 @@
 ---
+import SectionLayout from "../layouts/SectionLayout.astro";
+import Figure from "./Figure.astro";
 const experience = [
   { lang: "HTML", time: "4" },
   { lang: "CSS", time: "4" },
@@ -9,13 +11,77 @@ const experience = [
 ];
 ---
 
-<section>
-  {
-    experience.map((skill) => (
-      <div>
-        <span>{skill.lang}</span>
-        <span>{skill.time} Years of Experience</span>
-      </div>
-    ))
+<SectionLayout>
+  <section class="skills-grid">
+    {
+      experience.map((skill) => (
+        <div class="skill">
+          <h2>{skill.lang}</h2>
+          <div>{skill.time} Years of Experience</div>
+        </div>
+      ))
+    }
+  </section>
+  <aside class="deco-layer">
+    <div class="rings">
+      <Figure icon="pattern-rings" />
+    </div>
+  </aside>
+</SectionLayout>
+
+<style>
+  .deco-layer {
+    position: relative;
+    z-index: var(--deco-layer);
   }
-</section>
+
+  .rings {
+    position: absolute;
+    top: calc(-129px / 2);
+    left: calc(189px + -375px / 2);
+  }
+
+  .skills-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+
+    border-color: var(--clr-primary-100);
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    padding-block: 40px;
+  }
+
+  .skill {
+    text-align: center;
+  }
+
+  .skill > div {
+  }
+
+  @media (min-width: 768px) {
+    .skills-grid {
+      grid-template-columns: repeat(2, auto);
+      gap: 0;
+      border: none;
+      padding-top: 52px;
+      padding-bottom: 0;
+    }
+
+    .skill {
+      text-align: left;
+    }
+
+    .rings {
+      top: calc(-129px / 2);
+      left: calc(-768px / 2 + 570px);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .skills-grid {
+      grid-template-columns: repeat(3, auto);
+    }
+  }
+</style>

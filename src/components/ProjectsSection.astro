@@ -1,19 +1,53 @@
 ---
+import SectionLayout from "../layouts/SectionLayout.astro";
 import ProjectCard from "./ProjectCard.astro";
 const projects = await Astro.glob("../pages/projects/*.md");
 ---
 
-<section>
-  <header>
-    <h1>Projects</h1>
-    <a href="#contact"></a>
-    Contact me
-  </header>
-  <article>
-    {
-      projects.map((project) => (
-        <ProjectCard projectData={project.frontmatter} />
-      ))
+<SectionLayout>
+  <section>
+    <header>
+      <h1>Projects</h1>
+      <a href="#contact" class="button-style"> Contact me</a>
+    </header>
+    <article>
+      {
+        projects.map((project) => (
+          <ProjectCard projectData={project.frontmatter} />
+        ))
+      }
+    </article>
+  </section>
+</SectionLayout>
+
+<style>
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-block: 80px;
+  }
+
+  header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  article {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  @media (min-width: 768px) {
+    section {
+      margin-block: 100px;
     }
-  </article>
-</section>
+    article {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

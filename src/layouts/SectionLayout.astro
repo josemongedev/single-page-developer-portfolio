@@ -1,0 +1,38 @@
+---
+const { bgColor } = Astro.props;
+---
+
+<section class:list={[bgColor]}>
+    <slot />
+</section>
+<style>
+    :root {
+        --pd-x-section-mobile: 16px;
+        --pd-x-section-tablet: 30px;
+        --pd-x-section-desktop: 165px;
+    }
+
+    section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding-inline: var(--pd-x-section-mobile);
+    }
+
+    @media (min-width: 375px) {
+    }
+
+    @media (min-width: 768px) {
+        section {
+            padding-inline: var(--pd-x-section-tablet);
+        }
+    }
+
+    @media (min-width: 1440px) {
+        section {
+            padding-inline: var(--pd-x-section-desktop);
+        }
+    }
+</style>

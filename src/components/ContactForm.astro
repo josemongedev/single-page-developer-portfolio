@@ -1,0 +1,58 @@
+---
+---
+
+<form action="mailto:info@josemonge.dev" method="post" enctype="text/plain">
+    <div>
+        <input type="text" name="subject" id="name" placeholder="name" />
+    </div>
+    <div>
+        <input type="email" name="email" id="email" placeholder="email" />
+    </div>
+    <div>
+        <textarea name="message" id="message" rows="3" placeholder="message"
+        ></textarea>
+    </div>
+
+    <div>
+        <button class="button-style"> Send message</button>
+    </div>
+</form>
+
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    form div {
+        display: flex;
+        justify-content: end;
+    }
+
+    input,
+    textarea {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        text-transform: uppercase;
+        font-size: var(--fs-200);
+        line-height: var(--lh-300);
+        letter-spacing: var(--ls-200);
+        padding: 0 0 16px 0;
+        width: 100%;
+        background-color: transparent;
+        border: none;
+    }
+
+    div {
+        border-color: var(--clr-primary-100);
+        border-width: 0 0 1px 0;
+        border-style: solid;
+        padding: 0 24px 0 24px;
+    }
+
+    div:last-child {
+        border: none;
+    }
+</style>

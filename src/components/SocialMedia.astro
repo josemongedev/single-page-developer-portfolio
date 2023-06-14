@@ -1,7 +1,57 @@
 ---
-const socialIcons = await Astro.glob("../images/*.svg");
+import Icon from "./Icon.astro";
+const iconItems = [
+  {
+    icon: "icon-github",
+    url: "https://github.com",
+  },
+  {
+    icon: "icon-frontend-mentor",
+    url: "https://frontendmentor.io",
+  },
+  {
+    icon: "icon-linkedin",
+    url: "https://linkedin.com",
+  },
+  {
+    icon: "icon-twitter",
+    url: "https://twitter.com",
+  },
+];
 ---
 
-<span>
-  {socialIcons.map((icon) => <img src={icon.default} alt={icon.default} />)}
-</span>
+<nav>
+  {
+    iconItems.map((item) => (
+      <a href={item.url}>
+        <Icon name={item.icon} />
+      </a>
+    ))
+  }
+</nav>
+
+<style lang="css">
+  a {
+    fill: var(--clr-primary-100);
+  }
+
+  a:hover {
+    fill: var(--clr-accent-400);
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    width: 154px;
+  }
+
+  nav a {
+    flex-shrink: 1;
+  }
+
+  @media (min-width: 768px) {
+    nav {
+      max-width: 192.5px;
+    }
+  }
+</style>

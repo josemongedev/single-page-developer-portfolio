@@ -2,13 +2,53 @@
 const { projectData } = Astro.props;
 ---
 
-<div>
+<article>
   <picture>
     <source srcset={projectData.imageUrl.large} media="(min-width: 600px)" />
     <img src={projectData.imageUrl.small} alt={projectData.title} />
   </picture>
-  <strong>{projectData.title}</strong>
-  {projectData.languages.map((language) => <span>{language}</span>)}
-  <a href={projectData.projectUrl}>View project</a>
-  <a href={projectData.sourceUrl}>View source</a>
-</div>
+  <section>
+    <h3>{projectData.title}</h3>
+    <div class="langs">
+      {projectData.languages.map((language) => <span>{language}</span>)}
+    </div>
+  </section>
+  <div class="links">
+    <a id="view-project" href={projectData.projectUrl} class="button-style"
+      >View project</a
+    >
+    <a href={projectData.sourceUrl} class="button-style">View source</a>
+  </div>
+</article>
+
+<style>
+  article {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  h3 {
+    text-transform: uppercase;
+  }
+  .langs {
+    display: flex;
+    gap: 18px;
+  }
+  .links {
+    display: flex;
+    gap: 32px;
+  }
+
+  span {
+    font-size: var(--fs-300);
+    line-height: var(--lh-400);
+    color: var(--clr-primary-200);
+  }
+</style>

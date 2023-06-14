@@ -1,32 +1,92 @@
 ---
+import SectionLayout from "../layouts/SectionLayout.astro";
+import Figure from "./Figure.astro";
+import ProfileBar from "./ProfileBar.astro";
+import ContactForm from "./ContactForm.astro";
+const developerName = "Adam Keyes";
+
+const bgColor = "section-color-400";
 ---
 
-<section id="contact">
-  <article>
-    <h1>Contact</h1>
-
-    <p>
-      I would love to hear about your project and how I could help. Please fill
-      in the form, and I’ll get back to you as soon as possible.
-    </p>
-  </article>
-  <aside>
-    <form>
-      <label for="name">
-        Name
-        <input type="text" name="name" id="name" />
-      </label>
-      <label for="email">
-        Email
-        <input type="email" name="email" id="email" />
-      </label>
-
-      <label for="message">
-        Message
-        <textarea name="message" id="message" cols="4" rows="4"></textarea>
-      </label>
-
-      <button> Send message</button>
-    </form>
+<SectionLayout bgColor={bgColor}>
+  <aside class="deco-layer">
+    <div class="rings">
+      <Figure icon="pattern-rings" />
+    </div>
   </aside>
-</section>
+  <section id="contact">
+    <article>
+      <h1>Contact</h1>
+      <p>
+        I would love to hear about your project and how I could help. Please
+        fill in the form, and I’ll get back to you as soon as possible.
+      </p>
+    </article>
+    <ContactForm />
+  </section>
+  <footer>
+    <ProfileBar developerName={developerName} />
+  </footer>
+</SectionLayout>
+
+<style>
+  .deco-layer {
+    position: relative;
+    z-index: var(--deco-layer);
+  }
+
+  .rings {
+    position: absolute;
+    top: 436px;
+    right: calc(-375px / 2 + 172px);
+  }
+
+  section {
+    position: relative;
+    z-index: var(--content-layer);
+    padding: 60px 0 87px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  article {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  footer {
+    border-color: var(--clr-primary-100);
+    border-width: 1px 0 0 0;
+    border-style: solid;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px 60px 16px;
+  }
+
+  @media (min-width: 768px) {
+    footer {
+      height: auto;
+      padding: 30px 30px 40px 30px;
+    }
+
+    section {
+      width: 445px;
+    }
+
+    .rings {
+      left: calc(-768px / 2 - 368px);
+      top: 547px;
+    }
+  }
+</style>

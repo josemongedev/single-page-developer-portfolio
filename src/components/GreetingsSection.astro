@@ -1,13 +1,188 @@
 ---
+import SectionLayout from "../layouts/SectionLayout.astro";
+import Figure from "./Figure.astro";
+import ProfileBar from "./ProfileBar.astro";
+const developerName = "Adam Keyes";
 ---
 
-<section>
-  <h1>Nice to meet you! I'm Adam Keyes.</h1>
+<SectionLayout>
+  <aside class="bar-layer">
+    <ProfileBar developerName={developerName} />
+  </aside>
+  <aside class="deco-layer">
+    <div class="half-opacity rings">
+      <Figure icon="pattern-rings" />
+    </div>
+    <div class="circle">
+      <Figure icon="pattern-circle" />
+    </div>
+  </aside>
 
-  <p>
-    Based in the UK, I'm a front-end developer passionate about building
-    accessible web apps that users love.
-  </p>
+  <section>
+    <picture>
+      <source
+        srcset="./images/image-profile-desktop.webp"
+        media="(min-width:1440px)"
+      />
+      <source
+        srcset="./images/image-profile-tablet.webp"
+        media="(min-width:768px)"
+      />
+      <img src="./images/image-profile-mobile.webp" alt="" />
+    </picture>
 
-  <a href="#contact"> Contact me</a>
-</section>
+    <article>
+      <h1>
+        Nice to <br /> meet you! I'm <span class="name">{developerName}</span>.
+      </h1>
+      <div>
+        <p>
+          Based in the UK, I'm a front-end developer passionate about building
+          accessible web apps that users love.
+        </p>
+        <span>
+          <a href="#contact" class="button-style"> Contact me</a>
+        </span>
+      </div>
+    </article>
+  </section>
+</SectionLayout>
+
+<style>
+  :root {
+    --pd-y-greetings-section-mobile: 80px;
+    --pd-y-greetings-section-tablet: 60px;
+    --pd-y-greetings-section-desktop: 104px;
+  }
+
+  .bar-layer {
+    padding-top: 20px;
+    width: 100%;
+    position: absolute;
+    z-index: var(--bar-layer);
+    padding-inline: var(--pd-x-section-mobile);
+  }
+
+  @media (min-width: 375px) {
+  }
+
+  @media (min-width: 768px) {
+    .bar-layer {
+      padding-top: 30px;
+      padding-inline: var(--pd-x-section-tablet);
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .bar-layer {
+      padding-inline: var(--pd-x-section-desktop);
+    }
+  }
+
+  .deco-layer {
+    position: relative;
+    z-index: var(--deco-layer);
+  }
+
+  section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-color: var(--clr-primary-100);
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    padding-bottom: var(--pd-y-greetings-section-mobile);
+  }
+
+  picture {
+    width: 174px;
+    height: auto;
+  }
+  article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  article > div {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .name {
+    border-color: var(--clr-accent-400);
+    border-width: 0 0 4px 0;
+    border-style: solid;
+  }
+
+  br {
+    display: none;
+  }
+
+  .rings {
+    position: absolute;
+    top: 124px;
+    left: calc(-375px - 129px);
+    mix-blend-mode: normal;
+  }
+  .circle {
+    position: absolute;
+    top: 254px;
+    left: calc(-129px / 2 + 375px / 2);
+  }
+
+  @media (min-width: 768px) {
+    .rings {
+      top: 86px;
+      left: calc(-265px - 768px / 2);
+    }
+
+    .circle {
+      top: calc(471px - 14px);
+      left: calc(768px / 2 - 129px / 2);
+    }
+
+    section {
+      flex-direction: row;
+      justify-content: left;
+      overflow: clip;
+      padding-bottom: var(--pd-y-greetings-section-tablet);
+    }
+
+    picture {
+      z-index: -1;
+      position: absolute;
+      right: 0;
+      width: 322px;
+    }
+
+    article {
+      gap: 60px;
+      max-width: 445px;
+      margin-top: 151px;
+      text-align: start;
+    }
+
+    article > div {
+      gap: 34px;
+    }
+
+    br {
+      display: block;
+    }
+  }
+  @media (min-width: 1440px) {
+    picture {
+      width: 445px;
+    }
+
+    section {
+      padding-bottom: var(--pd-y-greetings-section-desktop);
+    }
+  }
+</style>

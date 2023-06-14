@@ -1,8 +1,44 @@
 ---
 import SocialMedia from "./SocialMedia.astro";
+interface Props {
+  developerName: string;
+}
+const { developerName } = Astro.props as Props;
+const concatName = developerName.split(" ").join("");
 ---
 
-<nav>
-  <span> adamkeyes</span>
+<aside class="profile-bar">
+  <span class="developer-name">{concatName}</span>
   <SocialMedia />
-</nav>
+</aside>
+
+<style>
+  .profile-bar {
+    z-index: var(--bar-layer);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .developer-name {
+    text-transform: lowercase;
+    text-align: center;
+    font-size: var(--fs-400);
+    line-height: var(--lh-500);
+    letter-spacing: var(--ls-300);
+  }
+
+  @media (min-width: 768px) {
+    .profile-bar {
+      width: 100%;
+      justify-content: space-between;
+      flex-direction: row;
+    }
+
+    .developer-name {
+      font-size: var(--fs-500);
+      letter-spacing: var(--ls-400);
+    }
+  }
+</style>
