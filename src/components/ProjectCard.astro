@@ -14,9 +14,7 @@ const { projectData } = Astro.props;
     </div>
   </section>
   <div class="links">
-    <a id="view-project" href={projectData.projectUrl} class="button-style"
-      >View project</a
-    >
+    <a href={projectData.projectUrl} class="button-style">View project</a>
     <a href={projectData.sourceUrl} class="button-style">View source</a>
   </div>
 </article>
@@ -37,10 +35,12 @@ const { projectData } = Astro.props;
   h3 {
     text-transform: uppercase;
   }
+
   .langs {
     display: flex;
     gap: 18px;
   }
+
   .links {
     display: flex;
     gap: 32px;
@@ -50,5 +50,14 @@ const { projectData } = Astro.props;
     font-size: var(--fs-300);
     line-height: var(--lh-400);
     color: var(--clr-primary-200);
+  }
+
+  @media (min-width: 1440px) {
+    section {
+    }
+    article {
+      row-gap: 69px;
+      column-gap: 26.83px;
+    }
   }
 </style>

@@ -42,12 +42,23 @@ const projects = await Astro.glob("../pages/projects/*.md");
 
   @media (min-width: 768px) {
     section {
-      margin-block: 100px;
+      margin-top: 60px;
+      margin-bottom: 100px;
     }
     article {
-      display: grid;
-      gap: 22px;
-      grid-template-columns: 1fr 1fr;
+      row-gap: 60px;
+      column-gap: 20px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1440px) {
+    section {
+      margin-top: 80px;
+      margin-bottom: 139px;
+    }
+    article {
+      row-gap: 69px;
+      column-gap: 26.83px;
     }
   }
 </style>

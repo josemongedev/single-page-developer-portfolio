@@ -89,4 +89,35 @@ const bgColor = "section-color-400";
       top: 547px;
     }
   }
+  @media (min-width: 1440px) {
+    section {
+      width: 100%;
+      padding: 0;
+      padding-top: 84px;
+      padding-bottom: 92px;
+      display: grid;
+      align-items: stretch;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    article {
+      width: 445px;
+    }
+    h1 {
+      text-align: left;
+    }
+    p {
+      text-align: left;
+    }
+
+    .rings {
+      left: calc(-1440px / 2 - 205px);
+      top: 327px;
+    }
+
+    footer {
+      height: auto;
+      padding: 47px 0 92px 0;
+    }
+  }
 </style>
