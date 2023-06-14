@@ -24,6 +24,7 @@
   --clr-primary-200: rgb(217, 217, 217);
   --clr-primary-400: rgb(36, 36, 36);
   --clr-primary-800: rgb(21, 21, 21);
+  --clr-primary-800-op75: rgba(21, 21, 21, 0.75);
   --clr-accent-400: rgb(76, 225, 160);
   --clr-secondary-400: rgb(255, 111, 91);
 
