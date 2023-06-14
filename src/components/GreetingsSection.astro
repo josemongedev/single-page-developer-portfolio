@@ -33,17 +33,16 @@ const developerName = "Adam Keyes";
 
     <article>
       <h1>
-        Nice to <br /> meet you! <br class="second-break" /> I'm <span
-          class="name">{developerName}</span
-        >.
+        Nice to <br class="first-break" /> meet you! <br class="second-break" />
+        I'm <span class="name">{developerName}</span>.
       </h1>
       <div>
-        <p>
-          Based in the UK, I'm a front-end developer passionate about building
-          accessible web apps that users love.
-        </p>
+        <div class="introduction">
+          Based in the UK, I'm a front-end developer <br /> passionate about building
+          accessible web apps <br /> that users love.
+        </div>
         <span>
-          <a href="#contact" class="button-style"> Contact me</a>
+          <a href="#contact" class="button-style">Contact me</a>
         </span>
       </div>
     </article>
@@ -165,7 +164,7 @@ const developerName = "Adam Keyes";
 
     article {
       gap: 60px;
-      max-width: 445px;
+      width: 445px;
       margin-top: 151px;
       text-align: start;
     }
@@ -174,7 +173,7 @@ const developerName = "Adam Keyes";
       gap: 34px;
     }
 
-    br {
+    .first-break {
       display: block;
     }
 
@@ -187,7 +186,7 @@ const developerName = "Adam Keyes";
     picture {
       position: relative;
       z-index: auto;
-      width: 445px;
+      min-width: 445px;
     }
 
     section {
@@ -196,12 +195,13 @@ const developerName = "Adam Keyes";
       padding-bottom: var(--pd-y-greetings-section-desktop);
     }
     article {
-      position: absolute;
-      left: var(--pd-x-section-desktop);
+      position: relative;
       z-index: var(--content-layer);
-      width: 706px;
     }
-    br {
+    article > h1 {
+      min-width: 706px;
+    }
+    .first-break {
       display: none;
     }
     .second-break {

@@ -95,8 +95,9 @@ body,
 h1,
 h2,
 h3,
-p {
+section p {
   margin: 0;
+  padding: 0%;
 }
 /* Font sizing in elements */
 body {
