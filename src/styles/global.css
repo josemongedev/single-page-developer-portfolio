@@ -67,7 +67,7 @@
 
   /* Layers (z-index) */
   --content-layer: 1;
-  --deco-layer: 0;
+  --deco-layer: 3;
   --bar-layer: 2;
 }
 
