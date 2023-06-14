@@ -22,18 +22,20 @@ const developerName = "Adam Keyes";
     <picture>
       <source
         srcset="./images/image-profile-desktop.webp"
-        media="(min-width:1440px)"
+        media="(min-width: 1440px)"
       />
       <source
         srcset="./images/image-profile-tablet.webp"
-        media="(min-width:768px)"
+        media="(min-width: 768px)"
       />
       <img src="./images/image-profile-mobile.webp" alt="" />
     </picture>
 
     <article>
       <h1>
-        Nice to <br /> meet you! I'm <span class="name">{developerName}</span>.
+        Nice to <br /> meet you! <br class="second-break" /> I'm <span
+          class="name">{developerName}</span
+        >.
       </h1>
       <div>
         <p>
@@ -60,7 +62,6 @@ const developerName = "Adam Keyes";
     width: 100%;
     position: absolute;
     z-index: var(--bar-layer);
-    padding-inline: var(--pd-x-section-mobile);
   }
 
   @media (min-width: 375px) {
@@ -68,14 +69,15 @@ const developerName = "Adam Keyes";
 
   @media (min-width: 768px) {
     .bar-layer {
+      max-width: 708px;
       padding-top: 30px;
-      padding-inline: var(--pd-x-section-tablet);
     }
   }
 
   @media (min-width: 1440px) {
     .bar-layer {
-      padding-inline: var(--pd-x-section-desktop);
+      max-width: 1110px;
+      padding-right: 29.5px;
     }
   }
 
@@ -175,14 +177,38 @@ const developerName = "Adam Keyes";
     br {
       display: block;
     }
+
+    .second-break {
+      display: none;
+    }
   }
+
   @media (min-width: 1440px) {
     picture {
+      position: relative;
+      z-index: auto;
       width: 445px;
     }
 
     section {
+      flex-direction: row-reverse;
+      justify-content: space-between;
       padding-bottom: var(--pd-y-greetings-section-desktop);
+    }
+    article {
+      position: absolute;
+      left: var(--pd-x-section-desktop);
+      z-index: var(--content-layer);
+      width: 706px;
+    }
+    br {
+      display: none;
+    }
+    .second-break {
+      display: block;
+    }
+    h1 {
+      overflow-x: visible;
     }
   }
 </style>

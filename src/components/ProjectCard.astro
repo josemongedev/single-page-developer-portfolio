@@ -13,10 +13,10 @@ const { projectData } = Astro.props;
       {projectData.languages.map((language) => <span>{language}</span>)}
     </div>
   </section>
-  <div class="links">
+  <aside class="links">
     <a href={projectData.projectUrl} class="button-style">View project</a>
     <a href={projectData.sourceUrl} class="button-style">View source</a>
-  </div>
+  </aside>
 </article>
 
 <style>
@@ -53,11 +53,16 @@ const { projectData } = Astro.props;
   }
 
   @media (min-width: 1440px) {
-    section {
-    }
     article {
-      row-gap: 69px;
-      column-gap: 26.83px;
+      --display-links: none;
+    }
+
+    section {
+      --display-links: block;
+    }
+
+    .links {
+      display: var(--display-links);
     }
   }
 </style>
